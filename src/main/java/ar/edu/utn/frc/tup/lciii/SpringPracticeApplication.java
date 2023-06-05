@@ -1,4 +1,4 @@
-package ar.edu.utn.frc.tup.lciii.springpractice;
+package ar.edu.utn.frc.tup.lciii;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

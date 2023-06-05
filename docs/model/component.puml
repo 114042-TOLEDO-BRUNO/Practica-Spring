@@ -1,4 +1,10 @@
 @startuml
-DataAccess - [PlayerJPARepository]
-getById - [PlayerJPARepository]
+database "players"
+[PlayerJPARepository] -("players"
+getReferenceById - [PlayerJPARepository]
+
+[PlayerService] -(getReferenceById
+getPlayerById - [PlayerService]
+
+[PlayerController] -(getPlayerById
 @enduml

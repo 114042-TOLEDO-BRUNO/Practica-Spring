@@ -1,0 +1,4 @@
+@startuml
+DataAccess - [PlayerJPARepository]
+getById - [PlayerJPARepository]
+@enduml

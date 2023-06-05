@@ -22,4 +22,11 @@ public class PlayerServiceImpl implements PlayerService {
         return player;
 
     }
+
+    @Override
+    public Player savePlayer(Player player) {
+        PlayerEntity playerEntity=modelMapper.map(player,PlayerEntity.class);
+        PlayerEntity playerEntitySaved=playerJPARepository.save(playerEntity);
+        return modelMapper.map(playerEntitySaved,Player.class);
+    }
 }

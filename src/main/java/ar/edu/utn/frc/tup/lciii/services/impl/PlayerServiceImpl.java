@@ -25,8 +25,8 @@ public class PlayerServiceImpl implements PlayerService {
 
     @Override
     public Player savePlayer(Player player) {
-        PlayerEntity playerEntity=modelMapper.map(player,PlayerEntity.class);
+        PlayerEntity playerEntity=modelMapper.map(player,PlayerEntity.class);// se pasa a playerentity
         PlayerEntity playerEntitySaved=playerJPARepository.save(playerEntity);
-        return modelMapper.map(playerEntitySaved,Player.class);
+        return modelMapper.map(playerEntitySaved,Player.class);//se convierte en player para devolveer la firma del metodo
     }
 }

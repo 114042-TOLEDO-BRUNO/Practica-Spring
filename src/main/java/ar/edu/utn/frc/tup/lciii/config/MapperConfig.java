@@ -7,6 +7,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.jpa.repository.Query;
 
 @Configuration//esta anotacion me dice que esta clase tiene metodos que levantan beans
 public class MapperConfig {
@@ -15,7 +16,7 @@ public class MapperConfig {
         return new ModelMapper();
     }
 
-    @Bean
+    @Bean @Qualifier("mergerMapper")
     public ModelMapper mergerMapper() {
         ModelMapper mapper =  new ModelMapper();
         mapper.getConfiguration()

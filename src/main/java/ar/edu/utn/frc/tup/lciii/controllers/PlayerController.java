@@ -8,8 +8,12 @@ import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
+
+import java.util.Objects;
 
 @RestController
 @RequestMapping("/players")
@@ -23,8 +27,13 @@ public class PlayerController {
         return ResponseEntity.ok(player);
     }
 
-    @PostMapping("")
+    @PostMapping("")//no se necesita una ruta porque ya estoyy parado sobre la ruta de player
     public ResponseEntity<Player> savePlayer(@RequestBody @Valid Player player) {
-        return ResponseEntity.ok(playerService.savePlayer(player));
+        Player playerSaved=playerService.savePlayer(player);
+        if(Objects.isNull(playerSaved)){
+            throw  new ResponseStatusException(HttpStatus.BAD_REQUEST,"username or email already exists");
+        }else{
+            return ResponseEntity.ok(playerService.savePlayer(player));
+        }
     }
 }

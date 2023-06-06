@@ -2,7 +2,9 @@ package ar.edu.utn.frc.tup.lciii.models;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
+
 import jakarta.validation.constraints.Email;
+
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -14,6 +16,16 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class Player {
     private Long id;
+
+    @NotNull(message = "Este campo no puede ser nulo")
+    private String userName;
+    @NotNull(message = "Este campo no puede ser nulo")
+    private String password;
+    private String email;
+    private String avatar;
+    @JsonFormat(shape = JsonFormat.Shape.STRING,pattern = "dd-MM-yyyy")//formateo de fechas
+    private LocalDateTime lastLoginDate;
+
     @NotNull(message = "username cant by not null")
     private String userName;
     @NotNull(message = "password cant by not null")
@@ -24,4 +36,5 @@ public class Player {
     private String avatar;
     @JsonFormat(shape = JsonFormat.Shape.STRING,pattern = "dd-MM-yyyy hh:mm:ss")
     private LocalDateTime lastLogin;
+
 }

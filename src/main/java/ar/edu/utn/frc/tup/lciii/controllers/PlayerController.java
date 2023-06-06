@@ -4,11 +4,13 @@ import ar.edu.utn.frc.tup.lciii.entities.PlayerEntity;
 import ar.edu.utn.frc.tup.lciii.models.Player;
 import ar.edu.utn.frc.tup.lciii.repositories.jpa.PlayerJPARepository;
 import ar.edu.utn.frc.tup.lciii.services.PlayerService;
-import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
@@ -20,20 +22,15 @@ import java.util.Objects;
 public class PlayerController {
     @Autowired
     private PlayerService playerService;
-
     @GetMapping("/{id}")
-    public ResponseEntity<Player> getById(@PathVariable Long id) {
-        Player player = playerService.getPlayerById(id);
+    public ResponseEntity<Player> getById(@PathVariable Long id){
+        Player player=playerService.getPlayerById(id);
         return ResponseEntity.ok(player);
     }
 
-    @PostMapping("")//no se necesita una ruta porque ya estoyy parado sobre la ruta de player
-    public ResponseEntity<Player> savePlayer(@RequestBody @Valid Player player) {
-        Player playerSaved=playerService.savePlayer(player);
-        if(Objects.isNull(playerSaved)){
-            throw  new ResponseStatusException(HttpStatus.BAD_REQUEST,"username or email already exists");
-        }else{
-            return ResponseEntity.ok(playerService.savePlayer(player));
-        }
+    @PostMapping("")
+    public ResponseEntity<Player>savePlayer(@RequestBody @Valid Player player){
+        return ResponseEntity.ok(playerService.savePlayer(player));
+
     }
 }

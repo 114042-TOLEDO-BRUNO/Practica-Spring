@@ -18,6 +18,6 @@ public class Player {
     private String password;
     private String email;
     private String avatar;
-    @JsonFormat(shape = JsonFormat.Shape.STRING,pattern = "dd-MM-yyyy")
+    @JsonFormat(shape = JsonFormat.Shape.STRING,pattern = "dd-MM-yyyy")//formateo de fechas
     private LocalDateTime lastLoginDate;
 }

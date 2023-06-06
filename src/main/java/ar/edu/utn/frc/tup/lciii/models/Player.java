@@ -26,15 +26,5 @@ public class Player {
     @JsonFormat(shape = JsonFormat.Shape.STRING,pattern = "dd-MM-yyyy")//formateo de fechas
     private LocalDateTime lastLoginDate;
 
-    @NotNull(message = "username cant by not null")
-    private String userName;
-    @NotNull(message = "password cant by not null")
-    private String password;
-    @NotNull(message = "email cant by not null")
-    @Email(message = "the email need to be a valid email")
-    private String email;
-    private String avatar;
-    @JsonFormat(shape = JsonFormat.Shape.STRING,pattern = "dd-MM-yyyy hh:mm:ss")
-    private LocalDateTime lastLogin;
 
 }

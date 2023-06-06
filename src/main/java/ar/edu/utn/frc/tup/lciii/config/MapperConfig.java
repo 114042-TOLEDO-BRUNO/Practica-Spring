@@ -16,7 +16,7 @@ public class MapperConfig {
         return new ModelMapper();
     }
 
-    @Bean @Qualifier("mergerMapper")
+    @Bean @Qualifier("mergerMapper")//otro modelmapper
     public ModelMapper mergerMapper() {
         ModelMapper mapper =  new ModelMapper();
         mapper.getConfiguration()

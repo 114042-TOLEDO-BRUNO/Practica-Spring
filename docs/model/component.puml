@@ -9,6 +9,7 @@ database "players"
 
 getPlayerById -- [PlayerService]
 savePlayer -- [PlayerService]
+
 [PlayerJPARepository] --("players"
 getReferenceById -- [PlayerJPARepository]
 save -- [PlayerJPARepository]

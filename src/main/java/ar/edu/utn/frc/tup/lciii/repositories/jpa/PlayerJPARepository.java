@@ -8,5 +8,6 @@ import java.util.Optional;
 
 @Repository
 public interface PlayerJPARepository extends JpaRepository<PlayerEntity,Long> {
-    Optional<PlayerEntity>findByUserNameOrEmail(String username,String email);
+    //despues de esto tengo que modificar el serviceimpl
+    Optional<PlayerEntity>findByUserNameOrEmail(String username,String email);//buscar un pEntity por nombre o email y pasamos los parametros
 }

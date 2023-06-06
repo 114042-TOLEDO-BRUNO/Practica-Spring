@@ -37,6 +37,11 @@ public class PlayerController {
 
     @PostMapping("")
     public ResponseEntity<Player>savePlayer(@RequestBody @Valid Player player){
-        return ResponseEntity.ok(playerService.savePlayer(player));
+        Player playerSaved=playerService.savePlayer(player);
+        if(Objects.isNull(playerSaved)){//esto es igual a playerSaved==null
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"username or email already exists");
+        }else{
+            return ResponseEntity.ok(playerSaved);//despues de esto es modificar el exceptionHandler
+        }
     }
 }

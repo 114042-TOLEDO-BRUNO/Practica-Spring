@@ -18,8 +18,14 @@ public class PlayerServiceImpl implements PlayerService {
     @Override
     public Player getPlayerById(Long id) {
         PlayerEntity playerEntity=playerJPARepository.getReferenceById(id);
-        Player player=modelMapper.map(playerEntity,Player.class);
-        return player;
+        return modelMapper.map(playerEntity,Player.class);
+    }
+
+    @Override
+    public Player savePlayer(Player player) {
+        PlayerEntity playerEntity=modelMapper.map(player,PlayerEntity.class);
+        return modelMapper.map(playerJPARepository.save(playerEntity), Player.class);
 
     }
+
 }

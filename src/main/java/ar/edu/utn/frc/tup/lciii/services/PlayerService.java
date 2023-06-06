@@ -6,4 +6,5 @@ import org.springframework.stereotype.Service;
 @Service
 public interface PlayerService {
     Player getPlayerById(Long id);
+    Player savePlayer(Player player);
 }

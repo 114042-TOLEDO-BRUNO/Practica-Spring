@@ -9,6 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.Mapping;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 public class PlayerServiceImpl implements PlayerService {
     @Autowired
@@ -25,6 +29,14 @@ public class PlayerServiceImpl implements PlayerService {
     public Player savePlayer(Player player) {
         PlayerEntity playerEntity=modelMapper.map(player,PlayerEntity.class);
         return modelMapper.map(playerJPARepository.save(playerEntity), Player.class);
+    }
+
+    @Override
+    public List<Player> getAllPlayers() {
+        List<PlayerEntity> playerEntities = playerJPARepository.findAll();
+        return playerEntities.stream()
+                .map(playerEntity -> modelMapper.map(playerEntity, Player.class))
+                .collect(Collectors.toList());
     }
 
 }

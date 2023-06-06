@@ -15,6 +15,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.List;
 import java.util.Objects;
 
 @RestController
@@ -28,9 +29,14 @@ public class PlayerController {
         return ResponseEntity.ok(player);
     }
 
+    @GetMapping("/allPlayers")
+    public ResponseEntity<List<Player>>getAllPlayers(){
+        List<Player> playerList=playerService.getAllPlayers();
+        return ResponseEntity.ok(playerList);
+    }
+
     @PostMapping("")
     public ResponseEntity<Player>savePlayer(@RequestBody @Valid Player player){
         return ResponseEntity.ok(playerService.savePlayer(player));
-
     }
 }

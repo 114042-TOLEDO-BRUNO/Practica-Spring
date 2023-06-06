@@ -1,10 +1,17 @@
 @startuml
 database "players"
-[PlayerJPARepository] -("players"
-getReferenceById - [PlayerJPARepository]
+[PlayerController] --(getPlayerById
+[PlayerController] --(savePlayer
 
-[PlayerService] -(getReferenceById
-getPlayerById - [PlayerService]
+[PlayerService] --(getReferenceById
+[PlayerService] --(save
+[PlayerService] --(findByUserNameOrEmail
 
-[PlayerController] -(getPlayerById
+getPlayerById -- [PlayerService]
+savePlayer -- [PlayerService]
+[PlayerJPARepository] --("players"
+getReferenceById -- [PlayerJPARepository]
+save -- [PlayerJPARepository]
+findByUserNameOrEmail -- [PlayerJPARepository]
+
 @enduml

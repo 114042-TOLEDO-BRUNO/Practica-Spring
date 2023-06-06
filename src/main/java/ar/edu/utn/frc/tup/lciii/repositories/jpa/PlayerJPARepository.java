@@ -8,5 +8,5 @@ import java.util.Optional;
 
 @Repository
 public interface PlayerJPARepository extends JpaRepository<PlayerEntity,Long> {
-
+    Optional<PlayerEntity>findByUserNameOrEmail(String username,String email);
 }

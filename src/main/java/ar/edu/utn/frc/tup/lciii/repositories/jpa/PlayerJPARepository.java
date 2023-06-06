@@ -4,6 +4,9 @@ import ar.edu.utn.frc.tup.lciii.entities.PlayerEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+
 @Repository
 public interface PlayerJPARepository extends JpaRepository<PlayerEntity,Long> {
+    Optional<PlayerEntity>findByNameOrEmail(String username,String Email);
 }

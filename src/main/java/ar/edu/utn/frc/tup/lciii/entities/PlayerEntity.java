@@ -15,19 +15,19 @@ public class PlayerEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name = "user_name")
+    @Column
     private String userName;
-    @Column(name = "password")
+    @Column
     private String password;
-    @Column(name = "email")
+    @Column
     private String email;
-    @Column(name = "avatar")
+    @Column
     private String avatar;
-    @Column(name = "last_login")
-    private LocalDateTime lastLoginDate;
-    @Column(name="created_at")
+    @Column
+    private LocalDateTime lastLogin;
+    @Column
     private LocalDateTime createdAt;
-    @Column(name = "updated_at")
+    @Column
     private LocalDateTime updatedAt;
 
 }

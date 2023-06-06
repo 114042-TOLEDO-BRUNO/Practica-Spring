@@ -24,9 +24,9 @@ public class SpringDocConfig {
     @Value("${app.dev-email}")private String devEmail;
     @Bean
     public OpenAPI openApi (
-        @Value("'@project.name@'") String appName,
-        @Value("'@project.description@'") String appDescription,
-        @Value("'@project.version@'") String appVersion){
+        @Value("@project.name@") String appName,
+        @Value("@project.description@") String appDescription,
+        @Value("@project.version@") String appVersion){
 
         Info info = new Info()
                 .title(appName)

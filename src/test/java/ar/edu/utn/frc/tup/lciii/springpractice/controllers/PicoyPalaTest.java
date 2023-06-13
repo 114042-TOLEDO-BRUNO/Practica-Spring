@@ -21,7 +21,7 @@ public class PicoyPalaTest {
     private MockMvc mockMvc;
     @Test
     public void picoTest()throws Exception{
-        this.mockMvc.perform(get("/pico")).andDo(print()).andExpect(status().isOk()).andExpect(status().isOk())
+        this.mockMvc.perform(get("/pico")).andDo(print()).andExpect(status().isOk())
                 .andExpect(content().string(containsString("pala")));
     }
 }

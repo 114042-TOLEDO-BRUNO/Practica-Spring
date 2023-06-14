@@ -8,9 +8,7 @@ import jakarta.persistence.EntityNotFoundException;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.Mapping;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -52,6 +50,41 @@ public class PlayerServiceImpl implements PlayerService {
         return playerEntities.stream()
                 .map(playerEntity -> modelMapper.map(playerEntity, Player.class))
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public Player getPlayerByUserNameAndEmail(String userName, String password) {
+        return null;
+    }
+
+    @Override
+    public Player getPlayerByUserNameAndPassword(String userName, String password) {
+        Optional<PlayerEntity> playerEntityOptional=playerJPARepository.findByUserNameAndPassword(userName,password);
+        if(playerEntityOptional.isPresent()){
+            return modelMapper.map(playerEntityOptional.get(),Player.class);
+        }else{
+            throw new EntityNotFoundException("UserName or password invalid");
+        }
+    }
+
+    @Override
+    public Player getPlayerByEmailAndPassword(String email, String password) {
+        Optional<PlayerEntity>playerEntityOptional=playerJPARepository.findByEmailAndPassword(email,password);
+        if(playerEntityOptional.isPresent()){
+            return modelMapper.map(playerEntityOptional.get(),Player.class);
+        }else{
+            throw  new EntityNotFoundException("Email or password is invalid");
+        }
+    }
+
+    @Override
+    public Player getPlayerByUserNameOrEmailAndPassword(String identity, String password) {
+        Optional<PlayerEntity> playerEntityOptional=playerJPARepository.findByUsernameOrEmailAndPassword(identity,password);
+        if(playerEntityOptional.isPresent()){
+            return modelMapper.map(playerEntityOptional,Player.class);
+        }else{
+            throw new EntityNotFoundException("some parameters are incorrect!");
+        }
     }
 
 }

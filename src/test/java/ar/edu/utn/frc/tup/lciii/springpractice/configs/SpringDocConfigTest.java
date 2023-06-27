@@ -18,16 +18,16 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class SpringDocConfigTest {
     @Autowired
-    private TestRestTemplate restTemplate;
+    private TestRestTemplate restTemplate;//usa esto para poder hacer llamada de apis
     @Test
     public void getDocumentation()throws IOException{
         ResponseEntity<String>responseEntity=this.restTemplate.getForEntity("/v3/api-docs",String.class);
         assertTrue(responseEntity.getStatusCode().is2xxSuccessful());
         assertNotNull(responseEntity.getBody());
 
-        Path specs= Paths.get("docs/specs");
+        Path specs= Paths.get("docs/specs");//crea la carpeta specs en la carpeta docs
         Files.createDirectories(specs);
-        Files.writeString(specs.resolve("swagger.json"),responseEntity.getBody());
+        Files.writeString(specs.resolve("swagger.json"),responseEntity.getBody());//el archivo json lo convierte en swagger.json
     }
 
 }

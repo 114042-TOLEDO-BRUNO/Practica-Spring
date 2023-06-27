@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class ErrorApi {
+public class ErrorApi {//intereceptor
     private String timeStamp;
     private Integer status;
     private String error;

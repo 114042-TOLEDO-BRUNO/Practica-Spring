@@ -12,15 +12,15 @@ import org.springframework.web.server.ResponseStatusException;
 import java.sql.Timestamp;
 import java.time.ZonedDateTime;
 
-@ControllerAdvice
-public class ExceptionHandlerController {
+@ControllerAdvice//escucha todas las excepciones que ocurran.verificar la ejecucion de los controladores
+public class ExceptionHandlerController {//interceptor
 
     /*
     Se utiliza para manejar excepciones específicas en un controlador.
     Permite definir un método que se ejecutará cuando ocurra una excepción
     particular, brindando una respuesta adecuada al cliente.
      */
-    @ExceptionHandler(Exception.class)
+    @ExceptionHandler(Exception.class)//la excepcion mas generica
     public ResponseEntity<ErrorApi> handleError(Exception exception) {
         ErrorApi error = buildError(exception.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(error);

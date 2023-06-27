@@ -17,7 +17,7 @@ import org.springframework.context.annotation.Configuration;
 
 
 @Configuration
-public class SpringDocConfig {
+public class SpringDocConfig {//sirve para documentar la aplicacion
 
     @Value("${app.url}") private String url;
     @Value("${app.dev-name}")private String devName;
@@ -46,7 +46,7 @@ public class SpringDocConfig {
                 .info(info)
                 .addServersItem(server);
     }
-    @Bean
+    @Bean//es el bean que necesita openAPi para generar la documentacion
     public ModelResolver modelResolver(ObjectMapper objectMapper){
         return new ModelResolver(objectMapper);
     }

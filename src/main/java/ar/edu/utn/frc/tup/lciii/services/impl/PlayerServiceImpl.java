@@ -32,10 +32,10 @@ public class PlayerServiceImpl implements PlayerService {
     public Player savePlayer(Player player){
         //despues de esto editamos el controller
         Optional<PlayerEntity> playerEntityOptional=playerJPARepository.findByUserNameOrEmail(
-                player.getUserName(),
+                player.getUserName(),//parametros de busqueda
                 player.getEmail()
         );
-        if(playerEntityOptional.isEmpty()){
+        if(playerEntityOptional.isEmpty()){//si devolvio o no un valor
             PlayerEntity playerEntity=modelMapper.map(player,PlayerEntity.class);
             PlayerEntity playerEntitySaved=playerJPARepository.save(playerEntity);
             return modelMapper.map(playerEntitySaved,Player.class);

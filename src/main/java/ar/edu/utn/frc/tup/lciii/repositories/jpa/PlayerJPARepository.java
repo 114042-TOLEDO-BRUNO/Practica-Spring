@@ -12,7 +12,7 @@ import java.util.Optional;
 public interface PlayerJPARepository extends JpaRepository<PlayerEntity,Long> {//ESTA CLASE REPRESENTA EL ACCESO AL DATAACCESS DE PLAYERS EN LA BASE DE DATOS
     //despues de esto tengo que modificar el serviceimpl
     Optional<PlayerEntity>findByUserNameOrEmail(String username,String email);//buscar un pEntity por nombre o email y pasamos los parametros
-
+//optional puede o no venir un playerentity, puede estar vacia el resultado de la busqueda en la BD
     Optional<PlayerEntity> findByUserNameAndPassword(String userName, String password);
 
     Optional<PlayerEntity> findByEmailAndPassword(String email, String password);

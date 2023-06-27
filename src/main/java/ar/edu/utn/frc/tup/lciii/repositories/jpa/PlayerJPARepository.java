@@ -18,5 +18,5 @@ public interface PlayerJPARepository extends JpaRepository<PlayerEntity,Long> {/
     Optional<PlayerEntity> findByEmailAndPassword(String email, String password);
     @Query("Select p from PlayerEntity p "+"where (p.userName like :identity or p.email like :identity)and p.password like:password")
     Optional<PlayerEntity>findByUsernameOrEmailAndPassword(@Param("identity")String identity,@Param("password")String password);
-
+    //query especifica,
 }

@@ -25,7 +25,7 @@ public class PlayerControllerTest {
     private MockMvc mockMvc;
 
     @MockBean
-    private PlayerService service;
+    private PlayerService service;//se mockea el servicio
     @Test
     public void getByIdTest()throws Exception{
         Player player=new Player();
@@ -34,7 +34,7 @@ public class PlayerControllerTest {
         player.setUserName("brunoToledo");
         player.setPassword("Password3#");
 
-        when(service.getPlayerById(1L)).thenReturn(player);
+        when(service.getPlayerById(1L)).thenReturn(player);//seteo del mock.el test hace que pasandole un id me devuelva un player
         this.mockMvc.perform(get("/players/1")).andDo(print()).andExpect(status().isOk())
                 .andExpect(jsonPath("$.userName").value("brunoToledo"))
                 .andExpect(jsonPath("$.email").value("email@email.com"))

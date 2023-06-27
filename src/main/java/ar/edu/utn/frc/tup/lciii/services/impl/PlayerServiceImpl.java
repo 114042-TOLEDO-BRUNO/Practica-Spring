@@ -14,12 +14,12 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-@Service
+@Service//SE LE PONE ESTA IMPLEMENTACION PARA QUE LA RECONOZCA EL APPLICATION CONTEXT
 public class PlayerServiceImpl implements PlayerService {
     @Autowired
     private PlayerJPARepository playerJPARepository;
     @Autowired
-    private ModelMapper modelMapper;
+    private ModelMapper modelMapper;//PARA MAPEAR DE PLAYERENTITY A PLAYER
     @Override
     public Player getPlayerById(Long id) {
         PlayerEntity playerEntity=playerJPARepository.getReferenceById(id);

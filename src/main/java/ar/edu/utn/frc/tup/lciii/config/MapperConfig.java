@@ -27,7 +27,7 @@ public class MapperConfig {
     @Bean
     public ObjectMapper objectMapper() {//seteo de configuracion de localdatetime para que serialice correctamente
         ObjectMapper objectMapper=new ObjectMapper();
-        objectMapper.registerModule(new JavaTimeModule());
+        objectMapper.registerModule(new JavaTimeModule());//EL JAVATIMEMODULE INTERPRETA EL LOCALDATETIME
         return objectMapper;
     }
 }

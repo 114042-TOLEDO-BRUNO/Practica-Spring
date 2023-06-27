@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
+@Service//ES UN COMPONENTE DE TIPO SERVICE
 public interface PlayerService {
     Player getPlayerById(Long id);
     Player savePlayer(Player player);

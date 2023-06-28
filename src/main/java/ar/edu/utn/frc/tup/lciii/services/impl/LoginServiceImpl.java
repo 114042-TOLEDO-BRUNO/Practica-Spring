@@ -10,6 +10,8 @@ import ar.edu.utn.frc.tup.lciii.services.PlayerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+
 @Service
 public class LoginServiceImpl implements LoginService {
     @Autowired
@@ -25,17 +27,24 @@ public class LoginServiceImpl implements LoginService {
             return loginWithIdentity((EmailIdentity) credential.getIdentity(),credential.getPassword());
         }
     }
+    @Override
+    public Player login(CredentialV2 credential) {
+        Player player=playerService.getPlayerByUserNameOrEmailAndPassword(credential.getIdentity(),credential.getPassword());
+        return updatedLastLogin(player);
+    }
 
     private Player loginWithIdentity(UsernameIdentity usernameIdentity,String password){
         //se declara en playerService dos metodos mas para que
-        return playerService.getPlayerByUserNameAndPassword(usernameIdentity.getUserName(),password);
+        Player player=playerService.getPlayerByUserNameAndPassword(usernameIdentity.getUserName(),password);
+        return updatedLastLogin(player);
     }
     private Player loginWithIdentity(EmailIdentity emailIdentity,String password){
-        return playerService.getPlayerByEmailAndPassword(emailIdentity.getEmail(),password);
+        Player player=playerService.getPlayerByEmailAndPassword(emailIdentity.getEmail(),password);
+        return updatedLastLogin(player);
     }
 
-    @Override
-    public Player login(CredentialV2 credential) {
-        return playerService.getPlayerByUserNameOrEmailAndPassword(credential.getIdentity(),credential.getPassword());
+    private Player updatedLastLogin(Player player){//metodo privado para todos los metodos de la clase dde servicio
+        player.setLastLoginDate(LocalDateTime.now());
+        return playerService.savePlayer(player);
     }
 }

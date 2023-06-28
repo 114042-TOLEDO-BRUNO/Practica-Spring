@@ -4,6 +4,7 @@ import ar.edu.utn.frc.tup.lciii.entities.PlayerEntity;
 import ar.edu.utn.frc.tup.lciii.models.Match;
 import ar.edu.utn.frc.tup.lciii.models.Player;
 import ar.edu.utn.frc.tup.lciii.repositories.jpa.PlayerJPARepository;
+import ar.edu.utn.frc.tup.lciii.services.MatchService;
 import ar.edu.utn.frc.tup.lciii.services.PlayerService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -29,6 +30,8 @@ import java.util.Objects;
 public class PlayerController {
     @Autowired
     private PlayerService playerService;
+    @Autowired
+    private MatchService matchService;
 
     @Operation(//para el esquema del get player by id
             summary = "trae un player por id",
@@ -52,7 +55,7 @@ public class PlayerController {
     }
     @GetMapping("/{id}/matches")
     public ResponseEntity<List<Match>> getMatchesOfPlayer(@PathVariable Long id){
-        List<Match> matches=playerService.getPlayerMatches(id);
+        List<Match> matches=matchService.getMatchesByPlayer(id);
         return ResponseEntity.ok(matches);
     }
 

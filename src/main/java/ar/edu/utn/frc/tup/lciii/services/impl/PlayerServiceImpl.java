@@ -23,8 +23,7 @@ public class PlayerServiceImpl implements PlayerService {
     private PlayerJPARepository playerJPARepository;
     @Autowired
     private ModelMapper modelMapper;//PARA MAPEAR DE PLAYERENTITY A PLAYER
-    @Autowired
-    private MatchService matchService;
+
 
     @Override
     public Player getPlayerById(Long id) {
@@ -93,10 +92,7 @@ public class PlayerServiceImpl implements PlayerService {
         }
     }
 
-    @Override
-    public List<Match> getPlayerMatches(Long id) {
-        return matchService.getMatchesByPlayer(id);
-    }
+
 
 
 }

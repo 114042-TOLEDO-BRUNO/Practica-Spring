@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class MatchDTO {
     @NotNull
-    private Long game;
+    private Long gameId;
     @NotNull
     private Long playerId;
 }

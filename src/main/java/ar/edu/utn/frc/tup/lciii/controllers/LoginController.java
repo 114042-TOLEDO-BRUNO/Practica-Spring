@@ -34,13 +34,13 @@ public class LoginController {
             @ApiResponse(responseCode = "500",description = "Internal server error",content =
             @Content(schema = @Schema(implementation = ErrorApi.class)))
     })
-    @PostMapping("")
+    @PostMapping("/opcion1")
     public ResponseEntity<Player> loginPlayer(@RequestBody @Valid Credential credential){
 
         return ResponseEntity.ok(loginService.login(credential));
     }
 
-    @PostMapping("/v2")
+    @PostMapping("/opcionv2")
     public ResponseEntity<Player> loginPlayer(@RequestBody @Valid CredentialV2 credentialV2){
 
         return ResponseEntity.ok(loginService.login(credentialV2));

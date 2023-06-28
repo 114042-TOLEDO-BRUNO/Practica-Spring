@@ -23,7 +23,7 @@ MatchStatus status
 }
 enum MatchStatus{
 STARTED
-FINISH
+FINISHED
 CANCELED
 }
 MatchStatus--*Match

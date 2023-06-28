@@ -6,6 +6,7 @@ import ar.edu.utn.frc.tup.lciii.models.Game;
 import ar.edu.utn.frc.tup.lciii.models.Match;
 import ar.edu.utn.frc.tup.lciii.models.MatchStatus;
 import ar.edu.utn.frc.tup.lciii.models.Player;
+import ar.edu.utn.frc.tup.lciii.models.rps.MatchRps;
 import ar.edu.utn.frc.tup.lciii.repositories.jpa.MatchJpaRepository;
 import ar.edu.utn.frc.tup.lciii.services.GameService;
 import ar.edu.utn.frc.tup.lciii.services.MatchService;
@@ -44,7 +45,7 @@ public class MatchServiceImpl implements MatchService {
 
     @Override
     public Match createMatch(MatchDTO matchDTO) {
-        Match match=new Match();
+        Match match=new MatchRps();
         Player player=playerService.getPlayerById(matchDTO.getPlayerId());
         Game game=gameService.getGame(matchDTO.getGameId());
         match.setPlayer(player);

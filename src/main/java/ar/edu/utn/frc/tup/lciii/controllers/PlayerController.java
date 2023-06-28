@@ -1,6 +1,7 @@
 package ar.edu.utn.frc.tup.lciii.controllers;
 
 import ar.edu.utn.frc.tup.lciii.entities.PlayerEntity;
+import ar.edu.utn.frc.tup.lciii.models.Match;
 import ar.edu.utn.frc.tup.lciii.models.Player;
 import ar.edu.utn.frc.tup.lciii.repositories.jpa.PlayerJPARepository;
 import ar.edu.utn.frc.tup.lciii.services.PlayerService;
@@ -48,6 +49,11 @@ public class PlayerController {
     public ResponseEntity<List<Player>>getAllPlayers(){
         List<Player> playerList=playerService.getAllPlayers();
         return ResponseEntity.ok(playerList);
+    }
+    @GetMapping("/{id}/matches")
+    public ResponseEntity<List<Match>> getMatchesOfPlayer(@PathVariable Long id){
+        List<Match> matches=playerService.getPlayerMatches(id);
+        return ResponseEntity.ok(matches);
     }
 
     @Operation(

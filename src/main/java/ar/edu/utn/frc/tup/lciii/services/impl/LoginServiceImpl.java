@@ -19,6 +19,7 @@ public class LoginServiceImpl implements LoginService {
     //necesita informacion del usuario el usuario service es el que sabe, si le pido al jpa el dia de mañana cuando
     //cambie la implementacion del jpa porque se migro la base de datos y dejamos de usar los servicios tal cual los
     //teniamos entonces el login service se tendra que adaptar junto con el servicio de player.
+
     @Override
     public Player login(Credential credential) {
         if(credential.getIdentity() instanceof UsernameIdentity){

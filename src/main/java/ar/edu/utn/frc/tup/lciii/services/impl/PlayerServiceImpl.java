@@ -1,8 +1,11 @@
 package ar.edu.utn.frc.tup.lciii.services.impl;
 
 import ar.edu.utn.frc.tup.lciii.entities.PlayerEntity;
+import ar.edu.utn.frc.tup.lciii.models.Match;
 import ar.edu.utn.frc.tup.lciii.models.Player;
 import ar.edu.utn.frc.tup.lciii.repositories.jpa.PlayerJPARepository;
+
+import ar.edu.utn.frc.tup.lciii.services.MatchService;
 import ar.edu.utn.frc.tup.lciii.services.PlayerService;
 import jakarta.persistence.EntityNotFoundException;
 import org.modelmapper.ModelMapper;
@@ -20,6 +23,9 @@ public class PlayerServiceImpl implements PlayerService {
     private PlayerJPARepository playerJPARepository;
     @Autowired
     private ModelMapper modelMapper;//PARA MAPEAR DE PLAYERENTITY A PLAYER
+    @Autowired
+    private MatchService matchService;
+
     @Override
     public Player getPlayerById(Long id) {
         PlayerEntity playerEntity=playerJPARepository.getReferenceById(id);
@@ -86,5 +92,11 @@ public class PlayerServiceImpl implements PlayerService {
             throw new EntityNotFoundException("some parameters are incorrect!");
         }
     }
+
+    @Override
+    public List<Match> getPlayerMatches(Long id) {
+        return matchService.getMatchesByPlayer(id);
+    }
+
 
 }
